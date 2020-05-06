@@ -1,0 +1,24 @@
+'Declare Shape object width and height in pixels.
+sct_sw = 80
+sct_sh = 120
+
+'Declare Shape object to be centered.
+sct_shape = Shapes.AddRectangle(sct_sw, sct_sh)
+
+'Get GraphicsWindow width and height in pixels.
+sct_gww = GraphicsWindow.Width
+sct_gwh = GraphicsWindow.Height
+
+'Main 'sublib'
+shapeCenter()
+
+Sub shapeCenter
+  sct_gww = GraphicsWindow.Width
+  sct_gwh = GraphicsWindow.Height
+  sct_temp[0] = sct_sw / 2
+  sct_x = sct_gww / 2 - sct_temp[0]
+  sct_temp[1] = sct_sh / 2
+  sct_y = sct_gwh / 2 - sct_temp[1]
+  
+  Shapes.Move(sct_shape, sct_x, sct_y)
+EndSub
