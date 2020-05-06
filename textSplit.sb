@@ -1,0 +1,43 @@
+'REMEMBER TO RENAME ALL VARIABLES FOR EACH ONE YOU RENAME!
+
+'Declare string to be split before calling subroutine.
+tsp_string = "Bruh moment."
+
+'Declare the output variable for after the string is split.
+tsp_output = ""
+
+'Declare what character the string should split at.
+tsp_splitat = " "
+
+'Do not modify: declare times splitted variable.
+tsp_splitcount = 0
+
+'Declare whether to delete the split character ("True"), or keep it as a seperate array index ("False").
+tsp_omit = "True"
+
+'Call text split subroutine.
+textSplit()
+
+'Main 'sublib'.
+Sub textSplit
+  
+  For i = 1 To Text.GetLength(tsp_string)
+    tsp_char[i] = Text.GetSubText(tsp_string, i, 1)
+  EndFor
+  
+  For i = 1 To Text.GetLength(tsp_string)
+    tsp_char[i] = Text.GetSubText(tsp_string, i, 1)
+    
+    If tsp_char[i] = tsp_splitat Then
+      tsp_splitcount = tsp_splitcount + 1
+      
+      If tsp_omit = "False" Then
+        tsp_output[tsp_splitcount] = tsp_char[i]
+        tsp_splitcount = tsp_splitcount + 1
+      EndIf
+      
+    Else
+      tsp_output[tsp_splitcount] = tsp_output[tsp_splitcount] + tsp_char[i]
+    EndIf
+  EndFor
+EndSub
