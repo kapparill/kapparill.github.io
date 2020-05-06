@@ -1,0 +1,21 @@
+'Declares default movement speed (in x interval). Can be modified!
+smo_speed = 0
+
+'Declares movement angle (in degrees). Can be modified!
+smo_angle = 0
+
+'Declares position values (CHANGE THESE TO YOUR PROGRAM'S POSITION VARIABLES!!!)
+x = x 'X position variable for your Shape object. Change this!
+y = y 'Y position variable for your Shape object. Change this!
+square = square 'Make sure to declare square as a Shape object here first. You can change the name of this too!
+
+'Main 'sublib'
+shapesMoveInDirection()
+
+Sub shapesMoveInDirection
+  smo_temp[0] = smo_speed * Math.Sin(smo_angle)
+  smo_temp[1] = smo_speed * Math.Cos(smo_angle)
+  x = x + smo_temp[0]
+  y = y + smo_temp[1]
+  Shapes.Move(square, x, y)
+EndSub
