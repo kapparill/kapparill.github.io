@@ -1,0 +1,21 @@
+'Declares text string to be reversed
+tre_string = "Bruh moment."
+
+'Main 'sublib'
+textReverse()
+
+Sub textReverse
+  tre_length = Text.GetLength(tre_string)
+  
+  For i = 1 To tre_length
+    tre_char[i] = Text.GetSubText(tre_string, i, 1)
+  EndFor
+  
+  tre_string = ""
+  
+  For i = tre_length To 1 Step -1
+    tre_string = tre_string + tre_char[i]
+  EndFor
+  
+  TextWindow.Write(tre_string)
+EndSub
