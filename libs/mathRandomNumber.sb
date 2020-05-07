@@ -1,0 +1,14 @@
+'Declare a random number (from) number (to) number.
+mrn_from = 5
+mrn_to = 10
+
+'Main 'sublib'
+mathRandomNumber()
+
+Sub mathRandomNumber
+  mrn_to = mrn_to + 1
+  mrn_output = Math.GetRandomNumber(mrn_to) - 1
+  mrn_to = mrn_to - 1
+EndSub
+
+TextWindow.WriteLine(mrn_output)
