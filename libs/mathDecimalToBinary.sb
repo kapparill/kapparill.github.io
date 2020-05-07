@@ -1,0 +1,31 @@
+' ATTENTION:
+' ----------------------------------
+' I spent a very long time coding this Sublib. It  was very confusing, and this code
+' can be further cleaned up, so if anyone wants to clean it up, send me a message
+' on the MSDN Forum.
+'-----------------------------------
+
+'Declares input decimal.
+mdb_input = 555
+
+'Main 'sublib'
+mathDecimalToBinary()
+
+Sub mathDecimalToBinary
+  mdb_output = ""
+  mdb_count = 0
+  While mdb_input >= 1
+    mdb_remainder[mdb_count] = Math.Remainder(mdb_input, 2)
+    mdb_input = mdb_input / 2
+    mdb_input = Math.Floor(mdb_input)
+    mdb_output = Text.Append(mdb_output, mdb_remainder[mdb_count])
+    mdb_count = mdb_count + 1
+  EndWhile
+  For i = Text.GetLength(mdb_output) To 1 Step -1
+    mdb_temp1 = Text.GetSubText(mdb_output, i, 1)
+    mdb_temp2 = Text.Append(mdb_temp2, mdb_temp1)
+  EndFor
+  mdb_output = mdb_temp2
+EndSub
+
+TextWindow.WriteLine(mdb_output)
