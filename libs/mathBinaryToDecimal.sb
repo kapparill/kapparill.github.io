@@ -1,0 +1,20 @@
+'Declare input binary number. No spaces!
+mbd_input = "01010101"
+
+'Main 'sublib'
+mathBinaryToDecimal()
+
+Sub mathBinaryToDecimal
+  mbd_length = Text.GetLength(mbd_input)
+  For i = 1 To mbd_length
+    mbd_char[i] = Text.GetSubText(mbd_input, i, 1)
+  EndFor
+  For i = mbd_length To 1 Step -1
+    If mbd_char[i] = "1" Then
+      mbd_char[i] = Math.Power(2, i - 1)
+      mbd_output = mbd_output + mbd_char[i]
+    EndIf
+  EndFor
+EndSub
+
+TextWindow.Write(mbd_output)
