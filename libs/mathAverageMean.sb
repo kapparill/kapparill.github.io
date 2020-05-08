@@ -1,0 +1,15 @@
+'Make sure to declare array first that contains numeric values to average, FROM 1 - NOT 0
+mav_array = mav_array
+
+'DO NOT CHANGE VARIABLE mav_array (with the exception of line 8, position 15)
+'Main 'sublib'
+mathAverageMean()
+
+Sub mathAverageMean
+  mav_array = mav_array 'Replace the second variable on this line with your array object!!!
+  mav_length = Array.GetItemCount(mav_array)
+  For i = 1 To mav_length
+    mav_output = mav_array[i] + mav_array[i + 1]
+  EndFor
+  mav_output = mav_output / mav_length
+EndSub
