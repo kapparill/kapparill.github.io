@@ -1,0 +1,27 @@
+' Declare Shape object to be shrunk. CHANGE SECOND PART TO YOUR VARIABLE
+sfa_shape = Shapes.AddRectangle(50, 50)
+
+' Declare fade % per 100ms
+sfa_speed = -10
+
+' Don't change this:
+Timer.Interval = 100
+
+' Main 'sublib'
+Timer.Tick = shapesFade
+
+Sub shapesFade
+  sfa_opacity = Shapes.GetOpacity(sfa_shape)
+  If sfa_speed <= 0 Then
+    If sfa_opacity >= 0 Then
+      Shapes.SetOpacity(sfa_shape, sfa_opacity + sfa_speed)
+      sfa_opacity = Shapes.GetOpacity(sfa_shape)
+    EndIf
+  EndIf
+  If sfa_speed >= 0 Then
+    If sfa_opacity <= 100 Then
+      Shapes.SetOpacity(sfa_shape, sfa_opacity + sfa_speed)
+      sfa_opacity = Shapes.GetOpacity(sfa_shape)
+    EndIf
+  EndIf
+EndSub
