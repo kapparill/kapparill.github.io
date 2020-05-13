@@ -1,0 +1,78 @@
+'TestFile=" d  : /mydir \ new File-(123) .xyz"
+'TestFile="  ./ dsds\ KKKK.doc   "
+TestFile=" d  : /mydir \ new File-(123) .xyz"
+
+textwindow.writeline("testfile= "+testfile)
+CleanFilename()
+qt=Text.GetCharacter(34) 'is a quote
+TextWindow.ForegroundColor="green"
+textwindow.writeline("testfile = "+qt+testfile+qt)
+TextWindow.ForegroundColor="White"
+'=======   BEGIN REMOVE-SPACES FROM TESTFILE SUBROUTINE   ==============================
+Sub CleanFilename  'Need TestFile - result TestFile
+  newtestfile=""              'removing the spaces "behind" the first slash
+  length=Text.GetLength(testfile)
+  i=1
+  While i < length+1          'changing / to \
+    char=Text.GetSubText(testfile, i, 1)
+    If char="/" Then
+      newtestfile=newtestfile+"\"
+    Else
+      newtestfile=newtestfile+char
+    EndIf
+    i=i+1
+  EndWhile
+  Testfile=newtestfile
+  
+  newtestfile=""              'removing the spaces in the beginning of the name
+  length=Text.GetLength(testfile)
+  While text.GetSubText(TestFile,1,1) = " "
+    testfile=Text.GetSubTextToEnd(TestFile,2) 'remove space
+  EndWhile
+  
+  i=1
+  While i < length+1
+    char=Text.GetSubText(testfile, i, 1)
+    If char="\" Then
+      newtestfile=newtestfile+char
+      While Text.GetSubText(testfile,i+1, 1)=" "
+        i=i+1
+      EndWhile
+    Else
+      newtestfile=newtestfile+char
+    EndIf
+    i=i+1
+  EndWhile
+  
+  'removing the spaces "BEFORE" the first slash reading the file from end to begin
+  testfile=newtestfile
+  newtestfile=""
+  length=Text.GetLength(testfile)
+  i=length+1
+  While i >0
+    char=Text.GetSubText(testfile, i, 1)
+    If char=":" Then  'removing the spaces before the first slash 
+      While i>0
+        char=Text.GetSubText(testfile, i, 1)
+        If char<>" " Then
+          newtestfile=char+newtestfile
+        EndIf
+        i=i-1
+      EndWhile
+    Else
+      If char="\" then 'or char="." Then 'spaces needs to be kept between filename and extend
+        newtestfile=char+newtestfile
+        While Text.GetSubText(testfile,i-1, 1)=" "
+          i=i-1
+        EndWhile
+      Else
+        newtestfile=char+newtestfile
+      EndIf
+             i=i-1
+      
+    EndIf
+  EndWhile
+  TestFile=Newtestfile  'Testfile is now without spaces
+  
+EndSub
+'=======   END  Remove-Spaces From Testfile SUBROUTINE   ====================

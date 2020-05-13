@@ -1,0 +1,25 @@
+'xxxxxxxxxxxxx Sub Trimspaces   Eddy Abts xxxxxxxxxxxxxxx
+Mytxt="Mytxt    =  This    is a test to trim    the spaces    ="
+textwindow.writeline("Mytxt= "+Mytxt)
+Trimspaces()
+TextWindow.ForegroundColor="green"
+textwindow.writeline("Mytxt= "+Mytxt)
+TextWindow.ForegroundColor="White"
+sub Trimspaces   'input: Mytxt    output: Mytxt
+  LDCall.Function3("InfoFunc","2","571-2 === Routine Trimspaces","Yellow")
+  newtxt=""
+  sp=0
+  for x=1 to text.getlength(mytxt)
+    y=text.getsubtext(mytxt,x,1)
+    if y=" " Then
+      sp=sp+1
+      if sp<2 then
+        newtxt=newtxt+y
+      endif 
+    Else
+      newtxt=text.append(newtxt,y)
+      sp=0  
+    endif
+  endfor
+  mytxt=newtxt
+EndSub
